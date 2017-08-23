@@ -1,2 +1,5 @@
 requests
 scrapy
+numpy
+plotly
+fbprophet

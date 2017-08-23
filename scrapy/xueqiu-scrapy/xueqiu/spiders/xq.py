@@ -5,7 +5,9 @@ from scrapy.selector import Selector
 import re
 import hashlib
 import requests
+from util import datetime2unixtimestamp
 
+from scrapy.utils.response import open_in_browser
 
 class XqSpider(scrapy.Spider):
     name = 'xq'
@@ -15,6 +17,9 @@ class XqSpider(scrapy.Spider):
     login_url = "https://xueqiu.com/snowman/login"
     check_login_url = "https://xueqiu.com/setting/user"
     download_url = "https://query1.finance.yahoo.com/v7/finance/download/JMEI?period1=1500741608&period2=1503420008&interval=1d&events=history&crumb=B5vTl/WUDG4"
+    start_date = datetime2unixtimestamp('2014-09-10 00:00:00')
+    end_date = datetime2unixtimestamp('2017-08-14 00:00:00')
+    download_url = "https://query1.finance.yahoo.com/v7/finance/download/%s?period1=%d&period2=%d&interval=1d&events=history&crumb=B5vTl/WUDG4" % ('JMEI',start_date,end_date)
     custom_settings = {
         "COOKIES_ENABLED": True
     }
@@ -33,7 +38,8 @@ class XqSpider(scrapy.Spider):
 
     def start_requests(self):
         print('start_requests')
-        yield Request(self.index_url, headers=self.headers, callback=self.login)
+#         yield Request(self.index_url, headers=self.headers, callback=self.login)
+        yield Request(self.download_url, callback=self.parse_history_file,dont_filter=True,method='POST')
 
     def login(self, response):
         print('post_login')
@@ -64,11 +70,12 @@ class XqSpider(scrapy.Spider):
 #             return False
         else:
             print('欢迎使用 xchaoinfo 写的模拟登录 \n 你的用户 id 是：%s, 你的用户名是：%s' % (str(res[0][0]),str(res[0][1])))
-            yield Request(self.download_url,headers=self.headers, callback=self.parse_history_file,dont_filter=True)
+            yield Request(self.download_url, callback=self.parse_history_file,dont_filter=True)
 #             return True
 
     def parse_history_file(self,response):
-        print(response.body)
+        print('response.body')
+#         print(response.body)
         with open('JMEI.csv','wb') as local_file:
             local_file.write(response.body)
             return True
