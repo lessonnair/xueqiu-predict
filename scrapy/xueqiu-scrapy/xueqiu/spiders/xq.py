@@ -21,8 +21,8 @@ class XqSpider(scrapy.Spider):
 
     login_formdata = {
         "remember_me": "true",
-        "username": "18500256134",
-        "password": "545300ceshi"
+        "username": "手机号",
+        "password": "密码"
     }
 
     headers = {

@@ -1,0 +1,7 @@
+eclipse.preferences.version=1
+encoding//scrapy/xueqiu-scrapy/xueqiu/items.py=utf-8
+encoding//scrapy/xueqiu-scrapy/xueqiu/middlewares.py=utf-8
+encoding//scrapy/xueqiu-scrapy/xueqiu/pipelines.py=utf-8
+encoding//scrapy/xueqiu-scrapy/xueqiu/settings.py=utf-8
+encoding//scrapy/xueqiu-scrapy/xueqiu/spiders/xq.py=utf-8
+encoding//scrapy/xueqiu.py=utf-8
