@@ -16,7 +16,7 @@ class XqSpider(scrapy.Spider):
     index_url = "https://xueqiu.com/"
     login_url = "https://xueqiu.com/snowman/login"
     check_login_url = "https://xueqiu.com/setting/user"
-    download_url = "https://query1.finance.yahoo.com/v7/finance/download/JMEI?period1=1500741608&period2=1503420008&interval=1d&events=history&crumb=B5vTl/WUDG4"
+#     download_url = "https://query1.finance.yahoo.com/v7/finance/download/JMEI?period1=1500741608&period2=1503420008&interval=1d&events=history&crumb=B5vTl/WUDG4"
     start_date = datetime2unixtimestamp('2014-09-10 00:00:00')
     end_date = datetime2unixtimestamp('2017-08-14 00:00:00')
     download_url = "https://query1.finance.yahoo.com/v7/finance/download/%s?period1=%d&period2=%d&interval=1d&events=history&crumb=B5vTl/WUDG4" % ('JMEI',start_date,end_date)

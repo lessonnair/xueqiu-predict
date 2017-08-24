@@ -52,9 +52,16 @@ ROBOTSTXT_OBEY = True
 
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
-#DOWNLOADER_MIDDLEWARES = {
-#    'xueqiu.middlewares.MyCustomDownloaderMiddleware': 543,
-#}
+
+DOWNLOADER_MIDDLEWARES = {
+#     'misc.agent_middleware.CustomHttpProxyMiddleware': 400,
+#     'xueqiu.proxy_middleware.CustomProxyMiddleware': 400,
+    'xueqiu.agent_middleware.CustomUserAgentMiddleware': 545,
+#     'xueqiu.cookie_middleware.CustomCookieMiddleware': 548,
+#    'misc.agent_middleware.CustomUserAgentMiddleware': 401,
+    'scrapy.contrib.downloadermiddleware.retry.RetryMiddleware': 600,
+    'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
+}
 
 # Enable or disable extensions
 # See http://scrapy.readthedocs.org/en/latest/topics/extensions.html
@@ -89,3 +96,15 @@ ROBOTSTXT_OBEY = True
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
 ROBOTSTXT_OBEY=False
+REDIRECT_ENABLED = False
+COOKIES_ENABLED = True
+# RANDOMIZE_DOWNLOAD_DELAY = True
+DOWNLOAD_TIMEOUT = 360
+
+CONCURRENT_REQUESTS = 1
+
+CONCURRENT_ITEMS = 1
+
+
+# COOKIES_DEBUG = True
+LOG_LEVEL = "DEBUG"

@@ -3,3 +3,5 @@ scrapy
 numpy
 plotly
 fbprophet
+lxml
+pandas
